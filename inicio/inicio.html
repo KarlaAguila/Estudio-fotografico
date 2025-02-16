@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Fotográfico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo Photography" width="80px">
+        </div>
+        <nav class="navbar">
+            <a href="../inicio/inicio.html">INICIO</a>
+            <a href="../paquetes/paquetes.php" class="protected">PAQUETES</a>
+            <a href="../promociones/promociones.html" class="protected">PROMOCIONES</a>
+            <a href="../carrito/carrito.html" class="protected">CARRITO</a>
+            <a href="../perfil/perfil.html" class="protected">PERFIL</a>
+            <button id="authButton" class="btn iniciar-sesion">INICIAR SESION</button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <h1>ESTUDIO FOTOGRÁFICO</h1>
+            <p>Capturamos tus mejores momentos</p>
+            <div class="buttons">
+                <button id="loginBtn" onclick="window.location.href='../login/login.html'" class="btn iniciar-sesion">INICIAR SESION</button>
+                <button id="registerBtn" onclick="window.location.href='../registrarse/registrarse.html'" class="btn registrarse">REGISTRARSE</button>
+            </div>
+        </section>
+
+        <section class="placeholder">
+            <img src="../img/estudio.jpg" alt="Placeholder">
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><img src="../img/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="../img/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="../img/youtube.png" alt="YouTube"></a>
+            <a href="#"><img src="../img/social.png" alt="LinkedIn"></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+            // Configurar botón de autenticación
+            const authButton = document.getElementById('authButton');
+            if (isLoggedIn) {
+                authButton.textContent = 'CERRAR SESIÓN';
+                authButton.onclick = function() {
+                    localStorage.setItem('isLoggedIn', 'false');
+                    window.location.href = '../inicio/inicio.html';
+                };
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('registerBtn').style.display = 'none';
+            } else {
+                authButton.onclick = function() {
+                    window.location.href = '../login/login.html';
+                };
+            }
+
+            // Bloquear navegación en enlaces protegidos
+            document.querySelectorAll('.protected').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    if (!isLoggedIn) {
+                        event.preventDefault();
+                        alert('Debes iniciar sesión para acceder a esta sección.');
+                        window.location.href = '../login/login.html';
+                    }
+                });
+            });
+
+            // Redirigir si intenta acceder directamente a páginas protegidas
+            const restrictedPages = [
+                'paquetes.html',
+                'promociones.html',
+                'carrito.html',
+                'perfil.html'
+            ];
+
+            restrictedPages.forEach(page => {
+                if (window.location.pathname.includes(page) && !isLoggedIn) {
+                    alert('Debes iniciar sesión para acceder a esta sección.');
+                    window.location.href = '../login/login.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
