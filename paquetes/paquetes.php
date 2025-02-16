@@ -42,7 +42,7 @@ $conn->close();
             <a href="../inicio/inicio.html">INICIO</a>
             <a href="../paquetes/paquetes.php" class="protected">PAQUETES</a>
             <a href="../promociones/promociones.html" class="protected">PROMOCIONES</a>
-            <a href="../carrito/carrito.html" class="protected">CARRITO</a>
+            <a href="../carrito/carrito.php" class="protected">CARRITO</a>
             <a href="../perfil/perfil.html" class="protected">PERFIL</a>
             <button id="authButton" class="btn cerrar-sesion"></button>
         </nav>
@@ -56,7 +56,8 @@ $conn->close();
                     <h3><?= htmlspecialchars($paquete['nombre_paquete']) ?></h3>
                     <p>Precio: $<?= number_format($paquete['precio'], 2) ?></p>
                     <p><?= htmlspecialchars($paquete['descripcion']) ?></p>
-                    <button class="btn agregar-carrito">Agregar al carrito</button>
+                    <button class="btn agregar-carrito" data-id="<?= $paquete['id_paquete'] ?>" data-precio="<?= $paquete['precio'] ?>">Agregar al carrito</button>
+
                 </div>
             <?php endforeach; ?>
         </div>
@@ -103,6 +104,42 @@ $conn->close();
                 window.location.href = '../login/login.html';
             }
         });
+
+
+        //Agregar al carrito de compras
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".agregar-carrito").forEach(button => {
+                button.addEventListener("click", function () {
+                    const paqueteId = this.getAttribute("data-id");
+                    const precio = this.getAttribute("data-precio");
+
+                    fetch("../carrito/agregar_carrito.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `id_paquete=${paqueteId}&precio=${precio}`
+                })
+                .then(response => response.text()) // Cambia a response.text() para ver el contenido completo
+                .then(data => {
+                    console.log(data);  // Imprime el contenido recibido
+                    try {
+                        const jsonData = JSON.parse(data);  // Intenta parsear el JSON
+                        if (jsonData.success) {
+                            alert("Agregado al carrito correctamente.");
+                        } else {
+                            alert("Error al agregar al carrito.");
+                        }
+                    } catch (error) {
+                        console.error("Error al parsear JSON:", error);
+                        alert("Hubo un error al procesar la respuesta.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error en el fetch:", error);
+                });
+
+                });
+            });
+        });
     </script>
 
 
@@ -118,7 +155,7 @@ $conn->close();
 
         .paquete {
             flex: 0 0 auto;
-            width: 400px;
+            width: 350px;
             height: 500px;
             padding: 15px;
             background-color: #fff;
