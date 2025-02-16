@@ -19,14 +19,26 @@
             <a href="../inicio/inicio.html">INICIO</a>
             <a href="../paquetes/paquetes.php" class="protected">PAQUETES</a>
             <a href="../promociones/promociones.html" class="protected">PROMOCIONES</a>
-            <a href="../carrito/carrito.html" class="protected">CARRITO</a>
+            <a href="../carrito/carrito.php" class="protected">CARRITO</a>
             <a href="../perfil/perfil.html" class="protected">PERFIL</a>
             <button id="authButton" class="btn cerrar-sesion"></button>
         </nav>
     </header>
 
     <main class="main-content">
-        
+        <section class="promo-container">
+            <h1 class="promo-title">🔥 Oferta Especial 🔥</h1>
+            <div class="promo-card">
+                <img src="../img/promocion.jpg" alt="Paquete Fotográfico" class="promo-img">
+                <div class="promo-info">
+                    <h2>Sesión Fotográfica Premium</h2>
+                    <p class="promo-description">Incluye 15 fotos editadas, 2 cambios de vestuario y locación a elegir.</p>
+                    <p class="promo-price">Antes: <span class="old-price">$1500</span></p>
+                    <p class="promo-price">Ahora: <span class="new-price">$999</span></p>
+                    <button class="btn add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -62,7 +74,7 @@
             });
     
             // Redirigir si el usuario intenta acceder directamente a páginas protegidas
-            const restrictedPages = ['paquetes.html', 'promociones.html', 'carrito.html', 'perfil.html'];
+            const restrictedPages = ['paquetes.php', 'promociones.html', 'carrito.php', 'perfil.html'];
             const currentPage = window.location.pathname.split('/').pop();
     
             if (restrictedPages.includes(currentPage) && !isLoggedIn) {
@@ -70,12 +82,11 @@
                 window.location.href = '../login/login.html';
             }
         });
-    </script>
-    
 
-    
-    
-    
+        document.querySelector(".add-to-cart").addEventListener("click", function() {
+            alert("¡Paquete agregado al carrito!");
+        });
+    </script>   
     
 </body>
 </html>

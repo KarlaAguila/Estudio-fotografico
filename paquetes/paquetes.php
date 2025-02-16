@@ -32,6 +32,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paquetes</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -96,7 +97,7 @@ $conn->close();
             });
     
             // Redirigir si el usuario intenta acceder directamente a páginas protegidas
-            const restrictedPages = ['paquetes.html', 'promociones.html', 'carrito.html', 'perfil.html'];
+            const restrictedPages = ['paquetes.php', 'promociones.html', 'carrito.php', 'perfil.html'];
             const currentPage = window.location.pathname.split('/').pop();
     
             if (restrictedPages.includes(currentPage) && !isLoggedIn) {

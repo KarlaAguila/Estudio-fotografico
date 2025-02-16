@@ -21,7 +21,7 @@
             <a href="../inicio/inicio.html">INICIO</a>
             <a href="../paquetes/paquetes.php" class="protected">PAQUETES</a>
             <a href="../promociones/promociones.html" class="protected">PROMOCIONES</a>
-            <a href="../carrito/carrito.html" class="protected">CARRITO</a>
+            <a href="../carrito/carrito.php" class="protected">CARRITO</a>
             <a href="../perfil/perfil.html" class="protected">PERFIL</a>
             <button id="authButton" class="btn cerrar-sesion"></button>
         </nav>
@@ -64,7 +64,7 @@
             });
     
             // Redirigir si el usuario intenta acceder directamente a páginas protegidas
-            const restrictedPages = ['paquetes.html', 'promociones.html', 'carrito.html', 'perfil.html'];
+            const restrictedPages = ['paquetes.php', 'promociones.html', 'carrito.php', 'perfil.html'];
             const currentPage = window.location.pathname.split('/').pop();
     
             if (restrictedPages.includes(currentPage) && !isLoggedIn) {

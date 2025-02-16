@@ -70,3 +70,71 @@ body {
     text-align: center;
     padding: 50px 20px;
 }
+
+/******************************************************************************************/
+
+.promo-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.promo-title {
+    font-size: 2rem;
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+.promo-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.promo-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.promo-info {
+    padding: 20px;
+}
+
+.promo-description {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.promo-price {
+    font-size: 1.5rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.new-price {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.add-to-cart {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add-to-cart:hover {
+    background-color: #c9302c;
+}

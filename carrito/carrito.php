@@ -1,21 +1,35 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../login/login.html");
-    exit;
+    die("Debes iniciar sesión para ver tu carrito.");
 }
 
-$usuario_id = $_SESSION['id_usuario']; // ID del usuario en sesión
+$usuario_id = $_SESSION['id_usuario'];
 
 $conexion = new mysqli("localhost", "root", "", "estudio");
 if ($conexion->connect_error) {
-    die("Error de conexión.");
+    die("Error de conexión: " . $conexion->connect_error);
 }
 
-// Obtener el carrito del usuario
-$sql = "SELECT * FROM CarritoCompras WHERE id_usuario = $usuario_id AND estado_c = 'pendiente'";
+// Obtener el carrito activo
+$sql = "SELECT id_carrito, total_c FROM CarritoCompras WHERE id_usuario = $usuario_id AND estado_c = 'pendiente'";
 $resultado = $conexion->query($sql);
+
+if ($resultado->num_rows == 0) {
+    die("Tu carrito está vacío.");
+}
+
 $carrito = $resultado->fetch_assoc();
+$id_carrito = $carrito['id_carrito'];
+$total = $carrito['total_c'];
+
+// Obtener los productos del carrito
+$sql = "SELECT d.id_paquete, p.nombre_paquete, d.cantidad, d.precio_unitario
+        FROM DetallesCarrito d
+        JOIN Paquetes p ON d.id_paquete = p.id_paquete
+        WHERE d.id_carrito = $id_carrito";
+$productos = $conexion->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +38,8 @@ $carrito = $resultado->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -41,22 +56,36 @@ $carrito = $resultado->fetch_assoc();
                 <button id="authButton" class="btn cerrar-sesion"></button>
             </nav>
     </header>
+    <main>
+        <h2>Carrito de Compras</h2>
 
-<main>
-    <h2>Carrito de Compras</h2>
+        <table border="1">
+            <tr>
+                <th>Paquete</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+                <th>Acción</th>
+            </tr>
 
-    <?php if ($carrito): ?>
-        <p>Número de paquetes: <?= $carrito['n_paquetes'] ?></p>
-        <p>Total a pagar: $<?= number_format($carrito['total_c'], 2) ?></p>
-        <button class="btn eliminar-carrito">Vaciar Carrito</button>
-    <?php else: ?>
-        <p>Tu carrito está vacío.</p>
-    <?php endif; ?>
-</main>
+            <?php while ($producto = $productos->fetch_assoc()): ?>
+                <tr>
+                    <td><?= htmlspecialchars($producto['nombre_paquete']) ?></td>
+                    <td><?= $producto['cantidad'] ?></td>
+                    <td>$<?= number_format($producto['precio_unitario'], 2) ?></td>
+                    <td>$<?= number_format($producto['cantidad'] * $producto['precio_unitario'], 2) ?></td>
+                    <td><button onclick="eliminarPaquete(<?= $producto['id_paquete'] ?>)">Eliminar</button></td>
+                </tr>
+            <?php endwhile; ?>
 
-<script>
+        </table>
 
-    document.addEventListener('DOMContentLoaded', function() {
+        <p><strong>Total del carrito: </strong>$<?= number_format($total, 2) ?></p>
+
+        <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
                 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         
                 // Configurar botón de autenticación
@@ -88,7 +117,7 @@ $carrito = $resultado->fetch_assoc();
                 });
         
                 // Redirigir si el usuario intenta acceder directamente a páginas protegidas
-                const restrictedPages = ['paquetes.html', 'promociones.html', 'carrito.html', 'perfil.html'];
+                const restrictedPages = ['paquetes.php', 'promociones.html', 'carrito.php', 'perfil.html'];
                 const currentPage = window.location.pathname.split('/').pop();
         
                 if (restrictedPages.includes(currentPage) && !isLoggedIn) {
@@ -96,22 +125,44 @@ $carrito = $resultado->fetch_assoc();
                     window.location.href = '../login/login.html';
                 }
             });
+     //************************************************ */   
+    function eliminarPaquete(idPaquete) {
+        if (!confirm("¿Deseas eliminar este paquete del carrito?")) return;
 
-    document.querySelector(".eliminar-carrito").addEventListener("click", function() {
-        fetch("eliminar_carrito.php", {
+        fetch("eliminar_paquete.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: "id_paquete=" + idPaquete
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Paquete eliminado.");
+                location.reload();
+            } else {
+                alert("Error al eliminar.");
+            }
+        });
+    }
+
+    function vaciarCarrito() {
+        if (!confirm("¿Deseas vaciar todo el carrito?")) return;
+
+        fetch("vaciar_carrito.php", {
             method: "POST"
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert("Carrito eliminado.");
-                window.location.reload();
+                alert("Carrito vaciado.");
+                location.reload();
             } else {
-                alert("Error al eliminar carrito.");
+                alert("Error al vaciar carrito.");
             }
         });
-    });
-</script>
+    }
+    </script>
 
 </body>
 </html>
+
