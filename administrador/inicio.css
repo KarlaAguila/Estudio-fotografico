@@ -88,15 +88,6 @@ body {
     margin: 0 15px;
 }
 
-.iniciar-sesion {
-    background-color:  #000;
-    color: #fff;
-}
-
-.iniciar-sesion:hover {
-    background-color: #333;
-}
-
 .registrarse {
     background-color: #000;
     color: #fff;
@@ -135,24 +126,6 @@ body {
     transform: scale(1.2);
 }
 
-.admin-access {
-    margin-top: 20px;
-}
 
-.admin-btn {
-    background-color: #000000;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.admin-btn:hover {
-    background-color: #201d1b;
-    transform: scale(1.05);
-}
 
 
