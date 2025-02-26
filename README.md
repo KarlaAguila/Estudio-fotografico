@@ -8,9 +8,13 @@ La aplicación cuenta con una página de inicio donde se presentan los servicios
 
 Para acceder a la plataforma, tanto clientes como administradores deben iniciar sesión con su usuario y contraseña únicos. El administrador tiene acceso a la gestión del sistema, mientras que los clientes pueden explorar paquetes y realizar compras.
 
+Página de inicio y formulario de login del usuario:
 ![Formulario de Login del Usuario](readme/Imagen2.png)
+![Formulario de Login del Usuario](readme/Imagen3.png)
 
-![Formulario de Login del Administrador](readme/Imagen3.png)
+Página de inicio y formulario de login del administrador:
+![Formulario de Login del Administrador](readme/Imagen4.png)
+![Formulario de Login del Administrador](readme/Imagen5.png)
 
 ---
 
@@ -20,11 +24,13 @@ El administrador cuenta con un módulo exclusivo donde puede visualizar, agregar
 
 - **Visualización de paquetes:** Se muestra una lista con los paquetes disponibles, junto con información clave como precio y descripción.
   
-  ![Visualización de Paquetes](readme/Imagen4.png)
+  ![Visualización de Paquetes](readme/Imagen6.png)
+  ![Visualización de Paquetes](readme/Imagen7.png)
 
 - **Edición y eliminación:** Los paquetes pueden modificarse o eliminarse según las necesidades del estudio.
   
-  ![Edición y Eliminación](readme/Imagen5.png)
+  ![Edición y Eliminación](readme/Imagen8.png)
+   ![Edición y Eliminación](readme/Imagen9.png)
 
 ---
 
@@ -35,7 +41,8 @@ Los clientes pueden explorar los diferentes paquetes de fotografía disponibles 
 - **Página de paquetes:** Se presentan los servicios disponibles con imágenes, precios y detalles.
 - **Agregar al carrito:** Los clientes pueden seleccionar los paquetes que desean y añadirlos al carrito de compras.
   
-  ![Selección de Paquetes](readme/Imagen6.png)
+  ![Selección de Paquetes](readme/Imagen10.png)
+   ![Selección de Paquetes](readme/Imagen11.png)
 
 ---
 
@@ -46,7 +53,10 @@ En la sección de carrito, los clientes pueden administrar los paquetes seleccio
 - **Visualización de productos en el carrito.**
 - **Opción para eliminar paquetes individuales o vaciar todo el carrito.**
   
-  ![Carrito de Compras](readme/Imagen7.png)
+  ![Carrito de Compras](readme/Imagen12.png)
+    ![Carrito de Compras](readme/Imagen13.png)
+    ![Carrito de Compras](readme/Imagen14.png)
+   ![Carrito de Compras](readme/Imagen15.png)
 
 ---
 
@@ -56,7 +66,8 @@ Cada usuario cuenta con un perfil donde puede visualizar y actualizar su informa
 
 - **Visualización y edición de información básica como nombre, correo y teléfono.**
   
-  ![Perfil del Usuario](readme/Imagen8.png)
+  ![Perfil del Usuario](readme/Imagen16.png)
+  ![Perfil del Usuario](readme/Imagen17.png)
 
 ---
 
