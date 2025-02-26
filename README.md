@@ -4,15 +4,18 @@
 
 <img src="readme/Imagen1.png" width="500"/>
 
+
 La aplicación cuenta con una página de inicio donde se presentan los servicios del estudio fotográfico y se permite el acceso tanto a clientes como al administrador.
 
 Para acceder a la plataforma, tanto clientes como administradores deben iniciar sesión con su usuario y contraseña únicos. El administrador tiene acceso a la gestión del sistema, mientras que los clientes pueden explorar paquetes y realizar compras.
 
 Página de inicio y formulario de login del usuario:
+
 <img src="readme/Imagen2.png" width="500"/>
 <img src="readme/Imagen3.png" width="500"/>
 
 Página de inicio y formulario de login del administrador:
+
 <img src="readme/Imagen4.png" width="500"/>
 <img src="readme/Imagen5.png" width="500"/>
 
