@@ -60,7 +60,6 @@ Cada usuario cuenta con un perfil donde puede visualizar y actualizar su informa
 
 ---
 
-📌 **Nota:** Recuerda reemplazar `ruta/de/tu/imagenX.png` con la URL o ruta correcta de cada imagen en tu repositorio.
 
 
 
