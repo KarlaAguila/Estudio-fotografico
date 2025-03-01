@@ -1,4 +1,4 @@
-## 📸 Página Web de Estudio Fotográfico
+## Página Web de Estudio Fotográfico
 
 ## Página de Inicio y Autenticación
 
