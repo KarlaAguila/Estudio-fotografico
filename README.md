@@ -21,7 +21,7 @@ Página de inicio y formulario de login del administrador:
 
 ---
 
-## 🎛️ Módulo de Gestión de Paquetes (Administrador)
+## Módulo de Gestión de Paquetes (Administrador)
 
 El administrador cuenta con un módulo exclusivo donde puede visualizar, agregar, editar y eliminar paquetes de servicios fotográficos.
 
