@@ -37,7 +37,7 @@ El administrador cuenta con un módulo exclusivo donde puede visualizar, agregar
 
 ---
 
-## 📦 Página de Usuario y Selección de Paquetes
+## Página de Usuario y Selección de Paquetes
 
 Los clientes pueden explorar los diferentes paquetes de fotografía disponibles en la plataforma.
 
