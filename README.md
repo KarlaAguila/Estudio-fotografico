@@ -65,7 +65,7 @@ En la sección de carrito, los clientes pueden administrar los paquetes seleccio
 
 ## Perfil del Usuario
 
-Cada usuario cuenta con un perfil donde puede visualizar y actualizar su información personal.
+Cada usuario cuenta con un perfil donde puede visualizar y actualizar su información personal
 
 - **Visualización y edición de información básica como nombre, correo y teléfono.**
   
