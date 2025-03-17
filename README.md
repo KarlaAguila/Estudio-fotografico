@@ -49,7 +49,7 @@ Los clientes pueden explorar los diferentes paquetes de fotografía disponibles 
 
 ---
 
-## 🛒 Carrito de Compras
+## Carrito de Compras
 
 En la sección de carrito, los clientes pueden administrar los paquetes seleccionados antes de completar la compra.
 
