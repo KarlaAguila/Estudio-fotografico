@@ -67,7 +67,7 @@ En la sección de carrito, los clientes pueden administrar los paquetes seleccio
 
 Cada usuario cuenta con un perfil donde puede visualizar y actualizar su información personal
 
-- **Visualización y edición de información básica como nombre, correo y teléfono.**
+- **Visualización y edición de información básica como nombre, correo y teléfono**
   
   <img src="readme/Imagen16.png" width="500"/>
   <img src="readme/Imagen17.png" width="500"/>
